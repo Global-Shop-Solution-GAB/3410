@@ -1,0 +1,19 @@
+Program.Sub.ScreenSU.Start
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+V.Passed.000201.Set("Import Lines")
+F.Intrinsic.Control.If(V.Caller.Switches,=,"N")
+	F.Intrinsic.UI.ChangeCallerProperty(V.Passed.000201,"Lock",1)
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.ChangeCallerProperty(V.Passed.000201,"Lock",0)
+F.Intrinsic.Control.EndIf
+
+
+Program.Sub.Main.End
+
+
