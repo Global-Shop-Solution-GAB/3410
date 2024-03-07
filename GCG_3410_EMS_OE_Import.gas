@@ -1,0 +1,584 @@
+Program.Sub.ScreenSU.Start
+gui.F_OrderImport..create
+gui.F_OrderImport..caption("Order Lines Import")
+gui.F_OrderImport..size(4350,2655)
+gui.F_OrderImport..position(0,0)
+gui.F_OrderImport..event(unload,ProgramEnd)
+gui.F_OrderImport..fontname("arial")
+gui.F_OrderImport..fontsize(8)
+gui.F_OrderImport..forecolor(0)
+gui.F_OrderImport..fontstyle(False,False,False,False,False)
+gui.F_OrderImport..BackColor(-2147483633)
+gui.F_OrderImport..controlbox(True)
+gui.F_OrderImport..maxbutton(False)
+gui.F_OrderImport..minbutton(True)
+gui.F_OrderImport..mousepointer(0)
+gui.F_OrderImport..moveable(True)
+gui.F_OrderImport..sizeable(False)
+gui.F_OrderImport..ShowInTaskBar(True)
+gui.F_OrderImport..titlebar(True)
+gui.F_OrderImport.txtPath.create(textbox)
+gui.F_OrderImport.txtPath.text("")
+gui.F_OrderImport.txtPath.visible(True)
+gui.F_OrderImport.txtPath.size(3300,315)
+gui.F_OrderImport.txtPath.zorder(0)
+gui.F_OrderImport.txtPath.position(200,1100)
+gui.F_OrderImport.txtPath.enabled(True)
+gui.F_OrderImport.txtPath.fontname("arial")
+gui.F_OrderImport.txtPath.fontsize(8)
+gui.F_OrderImport.txtPath.BackColor(-2147483643)
+gui.F_OrderImport.cmdBrowse.create(button)
+gui.F_OrderImport.cmdBrowse.caption("")
+gui.F_OrderImport.cmdBrowse.visible(True)
+gui.F_OrderImport.cmdBrowse.size(300,270)
+gui.F_OrderImport.cmdBrowse.zorder(0)
+gui.F_OrderImport.cmdBrowse.position(3600,1100)
+gui.F_OrderImport.cmdBrowse.enabled(True)
+gui.F_OrderImport.cmdBrowse.fontname("arial")
+gui.F_OrderImport.cmdBrowse.fontsize(8)
+gui.F_OrderImport.cmdBrowse.event(click,GetPath)
+gui.F_OrderImport.cmdImport.create(button)
+gui.F_OrderImport.cmdImport.caption("Import")
+gui.F_OrderImport.cmdImport.visible(True)
+gui.F_OrderImport.cmdImport.size(975,375)
+gui.F_OrderImport.cmdImport.zorder(0)
+gui.F_OrderImport.cmdImport.position(200,1600)
+gui.F_OrderImport.cmdImport.enabled(True)
+gui.F_OrderImport.cmdImport.fontname("arial")
+gui.F_OrderImport.cmdImport.fontsize(8)
+gui.F_OrderImport.cmdImport.event(click,Import)
+gui.F_OrderImport.txtCust.create(textbox)
+gui.F_OrderImport.txtCust.text("")
+gui.F_OrderImport.txtCust.visible(True)
+gui.F_OrderImport.txtCust.size(1215,315)
+gui.F_OrderImport.txtCust.zorder(0)
+gui.F_OrderImport.txtCust.position(200,400)
+gui.F_OrderImport.txtCust.enabled(False)
+gui.F_OrderImport.txtCust.fontname("arial")
+gui.F_OrderImport.txtCust.fontsize(8)
+gui.F_OrderImport.txtCust.BackColor(-2147483643)
+gui.F_OrderImport.txtOrder.create(textbox)
+gui.F_OrderImport.txtOrder.text("")
+gui.F_OrderImport.txtOrder.visible(True)
+gui.F_OrderImport.txtOrder.size(1215,315)
+gui.F_OrderImport.txtOrder.zorder(0)
+gui.F_OrderImport.txtOrder.position(1600,400)
+gui.F_OrderImport.txtOrder.enabled(False)
+gui.F_OrderImport.txtOrder.fontname("arial")
+gui.F_OrderImport.txtOrder.fontsize(8)
+gui.F_OrderImport.txtOrder.BackColor(-2147483643)
+gui.F_OrderImport.lblCust.create(label)
+gui.F_OrderImport.lblCust.caption("Customer")
+gui.F_OrderImport.lblCust.visible(True)
+gui.F_OrderImport.lblCust.size(1095,255)
+gui.F_OrderImport.lblCust.zorder(0)
+gui.F_OrderImport.lblCust.position(200,200)
+gui.F_OrderImport.lblCust.enabled(True)
+gui.F_OrderImport.lblCust.fontname("arial")
+gui.F_OrderImport.lblCust.fontsize(8)
+gui.F_OrderImport.lblCust.BackColor(-2147483633)
+gui.F_OrderImport.lblORder.create(label)
+gui.F_OrderImport.lblORder.caption("Order No")
+gui.F_OrderImport.lblORder.visible(True)
+gui.F_OrderImport.lblORder.size(1095,255)
+gui.F_OrderImport.lblORder.zorder(0)
+gui.F_OrderImport.lblORder.position(1600,200)
+gui.F_OrderImport.lblORder.enabled(True)
+gui.F_OrderImport.lblORder.fontname("arial")
+gui.F_OrderImport.lblORder.fontsize(8)
+gui.F_OrderImport.lblORder.BackColor(-2147483633)
+gui.F_OrderImport.lblPath.create(label)
+gui.F_OrderImport.lblPath.caption("Import Path")
+gui.F_OrderImport.lblPath.visible(True)
+gui.F_OrderImport.lblPath.size(1095,255)
+gui.F_OrderImport.lblPath.zorder(0)
+gui.F_OrderImport.lblPath.position(200,875)
+gui.F_OrderImport.lblPath.enabled(True)
+gui.F_OrderImport.lblPath.fontname("arial")
+gui.F_OrderImport.lblPath.fontsize(8)
+gui.F_OrderImport.lblPath.BackColor(-2147483633)
+gui.F_OrderImport.Progress1.create(progressbar)
+gui.F_OrderImport.Progress1.visible(False)
+gui.F_OrderImport.Progress1.size(2610,255)
+gui.F_OrderImport.Progress1.zorder(0)
+gui.F_OrderImport.Progress1.position(1300,1700)
+gui.F_OrderImport.Progress1.enabled(True)
+gui.F_OrderImport.lblStatus.create(label)
+gui.F_OrderImport.lblStatus.caption("")
+gui.F_OrderImport.lblStatus.visible(True)
+gui.F_OrderImport.lblStatus.size(2550,255)
+gui.F_OrderImport.lblStatus.zorder(0)
+gui.F_OrderImport.lblStatus.position(1300,1500)
+gui.F_OrderImport.lblStatus.enabled(True)
+gui.F_OrderImport.lblStatus.fontname("arial")
+gui.F_OrderImport.lblStatus.fontsize(8)
+gui.F_OrderImport.lblStatus.BackColor(-2147483633)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.Global.sOrder.Declare(String)
+Variable.Global.sCust.Declare(String)
+Variable.Global.sData.Declare(String)
+Variable.Global.sFile.Declare(String)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.If(V.Caller.Switches,=,"N")
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.If(V.Passed.000003,=,"0000000")
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndIf
+
+V.Global.sOrder.Set(V.Passed.000003)
+V.Global.sCust.Set(V.Passed.000006)
+
+F.Intrinsic.String.RPad(V.Global.sCust," ",7,V.Global.sCust)
+F.Intrinsic.String.Concat("EM",V.Caller.Terminal,V.Caller.CompanyCode,V.Global.sFile)
+
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+F.ODBC.Connection!con.Execute("Delete from ATG_EMSImportLog")
+
+F.Intrinsic.Control.If(V.Global.sCust,<>,"      ")
+	Gui.F_OrderImport.txtCust.Text(V.Global.sCust)
+	Gui.F_OrderImport.txtOrder.Text(V.Global.sOrder)
+	Gui.F_OrderImport.txtPath.Text("")
+	Gui.F_OrderImport..Show
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.CallSub("ProgramEnd")
+F.Intrinsic.Control.EndIf
+
+
+
+Program.Sub.Main.End
+
+Program.Sub.GetPath.Start
+V.Local.sPath.Declare(String)
+
+V.Local.sPath.Set("")
+F.Intrinsic.UI.ShowOpenFileDialog("","*.xls","C:\",V.Local.sPath)
+F.Intrinsic.Control.If(V.Local.sPath,<>,"***CANCEL***")
+	Gui.F_OrderImport.txtPath.Text(V.Local.sPath)
+	'F.Intrinsic.Variable.AddRV("sPath",V.Local.sPath)
+F.Intrinsic.Control.EndIf
+
+Program.Sub.GetPath.End
+
+Program.Sub.MakeImportFile.Start
+V.Local.sText.Declare(String)
+V.Local.sImport.Declare(String)
+V.Local.sTemp.Declare(String)
+V.Local.i.Declare(Long)
+V.Local.sSQL.Declare(String)
+V.Local.sPart.Declare(String)
+V.Local.sRev.Declare(String)
+V.Local.sLogText.Declare(String)
+V.Local.sLogPath.Declare(String)
+V.Local.sImportData.Declare(String)
+V.Local.sLine.Declare(String)
+V.Local.bExists.Declare(Boolean)
+V.Local.sPath.Declare(String)
+V.Local.iLen.Declare(Long)
+V.Local.iVal.Declare(Long)
+V.Local.sLogPart.Declare(String)
+V.Local.sLogRev.Declare(String)
+V.Local.sLogPrice.Declare(String)
+
+F.Intrinsic.Control.CallSub("GetPartArr","sPath",V.Args.sPath)
+F.Intrinsic.Control.If(V.Args.bSuccess,=,False)
+	F.Intrinsic.Variable.AddRV("bSuccess",False)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+F.Intrinsic.String.Split(V.Args.sText,"*!*",V.Global.sData)
+
+V.Local.sText.Set("")
+'F.Intrinsic.Debug.Stop
+Gui.F_OrderImport.lblStatus.Caption("Generating import file . . .")
+Gui.F_OrderImport.Progress1.Max(V.Global.sData.UBound)
+F.Intrinsic.Control.For(V.Local.i,V.Global.sData.LBound,V.Global.sData.UBound,1)
+	Gui.F_OrderImport.Progress1.Value(V.Local.i)
+	F.Intrinsic.String.Split(V.Global.sData(v.Local.i),"!*!",V.Local.sImportData)
+	F.Intrinsic.String.RPad(V.Local.sImportData(1)," ",17,V.Local.sPart)
+	F.Intrinsic.String.LPad(V.Local.sImportData(2)," ",3,V.Local.sRev)
+	F.Intrinsic.String.Concat("select * from Inventory_Mstr where Part='",V.Local.sPart,V.Local.sRev,"'",V.Local.sSQL)
+	F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSQL)
+	F.Intrinsic.Control.If(V.Odbc.con!rst.EOF,=,False)
+		F.Intrinsic.String.Concat(V.Local.sText,"O",V.Local.sText)
+		F.Intrinsic.String.Concat(V.Local.sText,V.Global.sCust,V.Local.sText)
+		F.Intrinsic.String.Concat(V.Local.sText,V.Global.sOrder,V.Local.sText)
+		F.Intrinsic.String.Concat(V.Local.sText,V.Local.sPart,V.Local.sText)
+		F.Intrinsic.String.Concat(V.Local.sText,V.Local.sRev,V.Local.sText)
+		V.Local.sTemp.Set("")
+		F.Intrinsic.String.Rpad(V.Local.sTemp," ",18,V.Local.sTemp)
+		F.Intrinsic.String.Concat(V.Local.sText,V.Local.sTemp,V.Local.sText)
+		F.Intrinsic.String.Concat(V.Local.sText,V.Odbc.con!rst.FieldVal!Location,V.Local.sText)
+		F.Intrinsic.String.rpad(V.Odbc.con!rst.FieldVal!Product_Line," ",5,V.Local.sTemp)
+		F.Intrinsic.String.Concat(V.Local.sText,V.Local.sTemp,V.Local.sText)
+		F.Intrinsic.String.Concat(V.Local.sText,V.Odbc.con!rst.FieldVal!Description,V.Local.sText)
+		F.Intrinsic.String.LPad(V.Local.sImportData(0),"0",3,V.Local.sLine)
+		F.Intrinsic.String.Concat(V.Local.sText,V.Local.sLine,V.Local.sText)
+		F.Intrinsic.String.Concat(V.Local.sText," ",V.Local.sText)
+		F.Intrinsic.Math.Mult(V.Local.sImportData(4),100,V.Local.iVal)
+		F.Intrinsic.String.LPad(V.Local.ival.String,"0",11,V.Local.sTemp)
+		F.Intrinsic.String.RPad(V.Local.sTemp,"0",13,V.Local.sTemp)
+		F.Intrinsic.String.Concat(V.Local.sText,V.Local.sTemp,V.Local.sText)
+
+		F.Intrinsic.String.Concat("Select * from Inventory_Mst2 where Part='",V.Odbc.con!rst.FieldVal!Part,"'",V.Local.sSQL)
+		F.ODBC.Connection!con.OpenRecordsetRO("rst2",V.Local.sSQL)
+		F.Intrinsic.Control.If(V.Odbc.con!rst2.EOF,=,False)
+			F.Intrinsic.Math.Mult(V.Odbc.con!rst2.FieldVal!Lbs,100,V.Local.iVal)
+			F.Intrinsic.String.LPad(V.Local.ival.String,"0",9,V.Local.sTemp)
+			F.Intrinsic.String.RPad(V.Local.sTemp,"0",10,V.Local.sTemp)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sTemp,V.Local.sText)
+		F.Intrinsic.Control.Else
+			F.Intrinsic.String.Concat(V.Local.sText,"0000000000",V.Local.sText)
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rst2.Close
+
+		F.Intrinsic.Control.If(V.Odbc.con!rst.FieldVal!Amt_Price,<>,V.Local.simportdata(5).Float)
+			F.Intrinsic.Control.CallSub("ErrorLog","sLine",V.Local.sLine,"sPart",V.Local.sPart,"sRev",V.Local.sRev,"iMode",0)
+		F.Intrinsic.Control.Endif
+		F.Intrinsic.Math.Mult(V.Odbc.con!rst.FieldVal!Amt_Price,100,V.Local.iVal)
+		F.Intrinsic.String.LPad(V.Local.ival.String,"0",12,V.Local.sTemp)
+		F.Intrinsic.String.RPad(V.Local.sTemp,"0",16,V.Local.sTemp)
+		F.Intrinsic.String.Concat(V.Local.sText,V.Local.sTemp,V.Local.sText)
+		V.Local.sTemp.Set("")
+		F.Intrinsic.String.Rpad(V.Local.sTemp," ",250,V.Local.sTemp)
+		F.Intrinsic.String.Concat(V.Local.sText,V.Local.sTemp,V.Local.sText)
+		F.Intrinsic.String.Concat(V.Local.sText,V.Ambient.NewLine,V.Local.sText)
+	F.Intrinsic.Control.Else
+		'find old rev
+		F.ODBC.con!rst.Close
+		F.Intrinsic.String.Concat("select * from Inventory_Mstr where Part LIKE'",V.Local.sPart,"%' order by Part desc",V.Local.sSQL)
+		F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSQL)
+		F.Intrinsic.Control.If(V.Odbc.con!rst.EOF,=,False)
+			F.Intrinsic.String.Concat(V.Local.sText,"O",V.Local.sText)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Global.sCust,V.Local.sText)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Global.sOrder,V.Local.sText)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sPart,V.Local.sText)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sRev,V.Local.sText)
+			V.Local.sTemp.Set("")
+			F.Intrinsic.String.Rpad(V.Local.sTemp," ",18,V.Local.sTemp)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sTemp,V.Local.sText)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Odbc.con!rst.FieldVal!Location,V.Local.sText)
+			F.Intrinsic.String.rpad(V.Odbc.con!rst.FieldVal!Product_Line," ",5,V.Local.sTemp)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sTemp,V.Local.sText)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Odbc.con!rst.FieldVal!Description,V.Local.sText)
+			F.Intrinsic.String.LPad(V.Local.sImportData(0),"0",3,V.Local.sLine)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sLine,V.Local.sText)
+			F.Intrinsic.String.Concat(V.Local.sText," ",V.Local.sText)
+			F.Intrinsic.Math.Mult(V.Local.sImportData(4),100,V.Local.iVal)
+			F.Intrinsic.String.LPad(V.Local.ival.String,"0",11,V.Local.sTemp)
+			F.Intrinsic.String.RPad(V.Local.sTemp,"0",13,V.Local.sTemp)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sTemp,V.Local.sText)
+			F.Intrinsic.String.Concat(V.Local.sText,"0000000000",V.Local.sText)
+
+			F.Intrinsic.Math.Mult(V.Odbc.con!rst.FieldVal!Amt_Price,100,V.Local.iVal)
+			F.Intrinsic.String.LPad(V.Local.ival.String,"0",12,V.Local.sTemp)
+			F.Intrinsic.String.RPad(V.Local.sTemp,"0",16,V.Local.sTemp)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sTemp,V.Local.sText)
+			V.Local.sTemp.Set("")
+			F.Intrinsic.String.Rpad(V.Local.sTemp," ",250,V.Local.sTemp)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sTemp,V.Local.sText)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Ambient.NewLine,V.Local.sText)
+			'add line to rev change log
+			F.Intrinsic.Control.CallSub("ErrorLog","sLine",V.Local.sLine,"sPart",V.Local.sPart,"sRev",V.Local.sRev,"iMode",1)
+
+		F.Intrinsic.Control.Else
+			F.Intrinsic.String.Concat(V.Local.sText,"O",V.Local.sText)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Global.sCust,V.Local.sText)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Global.sOrder,V.Local.sText)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sPart,V.Local.sText)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sRev,V.Local.sText)
+			V.Local.sTemp.Set("")
+			F.Intrinsic.String.Rpad(V.Local.sTemp," ",25,V.Local.sTemp)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sTemp,V.Local.sText)
+			F.Intrinsic.String.Rpad(V.Local.sImportData(3)," ",30,V.Local.sTemp)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sTemp,V.Local.sText)
+			F.Intrinsic.String.LPad(V.Local.sImportData(0),"0",3,V.Local.sLine)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sLine,V.Local.sText)
+			F.Intrinsic.String.Concat(V.Local.sText," ",V.Local.sText)
+			F.Intrinsic.Math.Mult(V.Local.sImportData(4),100,V.Local.iVal)
+			F.Intrinsic.String.LPad(V.Local.ival.String,"0",11,V.Local.sTemp)
+			F.Intrinsic.String.RPad(V.Local.sTemp,"0",13,V.Local.sTemp)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sTemp,V.Local.sText)
+			F.Intrinsic.String.Concat(V.Local.sText,"0000000000",V.Local.sText)
+
+			F.Intrinsic.Math.Mult(V.Local.sImportData(5),100,V.Local.iVal)
+			F.Intrinsic.String.LPad(V.Local.ival.String,"0",12,V.Local.sTemp)
+			F.Intrinsic.String.RPad(V.Local.sTemp,"0",16,V.Local.sTemp)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sTemp,V.Local.sText)
+			V.Local.sTemp.Set("")
+			F.Intrinsic.String.Rpad(V.Local.sTemp," ",250,V.Local.sTemp)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sTemp,V.Local.sText)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Ambient.NewLine,V.Local.sText)
+			'add line to rev change log
+
+			F.Intrinsic.Control.CallSub("ErrorLog","sLine",V.Local.sLine,"sPart",V.Local.sPart,"sRev",V.Local.sRev,"iMode",2)
+
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+	
+	F.ODBC.con!rst.Close
+F.Intrinsic.Control.Next(V.Local.i)
+
+F.Intrinsic.Control.If(V.Local.sText.Length,>=,2)
+	F.Intrinsic.Math.Sub(V.Local.sText.Length,2,V.Local.iLen)
+	F.Intrinsic.String.Left(V.Local.stext,V.Local.ilen,V.Local.sText)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Local.sText,<>,"")
+	F.Intrinsic.Variable.AddRV("bSuccess",True)
+	F.Intrinsic.String.Concat(V.Caller.FilesDir,"\",V.Global.sFile,V.Local.sPath)
+	F.Intrinsic.File.Exists(V.Local.sPath,V.Local.bExists)
+	F.Intrinsic.Control.If(V.Local.bExists,=,True)
+		F.Intrinsic.File.DeleteFile(V.Local.sPath)
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.File.String2File(V.Local.sPath,V.Local.sText)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Variable.AddRV("bSuccess",False)
+F.Intrinsic.Control.EndIf
+
+Program.Sub.MakeImportFile.End
+
+Program.Sub.CallUpload.Start
+V.Local.sParam.Declare(String)
+V.Local.sPath.Declare(String)
+V.Local.sTemp.Declare(String)
+
+V.Local.sParam.Set("")
+F.Intrinsic.String.Concat(V.Caller.FilesDir,"\",V.Global.sFile,V.Local.sPath)
+F.Intrinsic.String.Rpad(Variable.Caller.User," ",8,Variable.Local.sTemp)
+F.Intrinsic.String.Concat(V.Local.sParam,V.Ambient.QuadQuote,Variable.Caller.CompanyCode,Variable.Local.sTemp,Variable.Local.sPath,V.Ambient.QuadQuote,Variable.Local.sParam)
+
+'F.Intrinsic.Debug.SetProgramDirectory("D:\Global\Prgms")
+F.Intrinsic.Task.Launchgsssync("ORDADCMD","-c",Variable.Local.Sparam)
+
+Program.Sub.CallUpload.End
+
+Program.Sub.ProgramEnd.Start
+F.Intrinsic.Control.If(V.Odbc.con.State,=,1)
+	F.ODBC.Connection!con.Close
+F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.End
+
+
+Program.Sub.ProgramEnd.End
+
+Program.Sub.Import.Start
+Gui.F_OrderImport..MousePointer(11)
+Gui.F_OrderImport.lblStatus.Caption("Getting data from spreadsheet . . .")
+Gui.F_OrderImport.Progress1.Visible(True)
+F.Intrinsic.Control.If(V.Screen.F_OrderImport!txtPath.Text,<>,"")
+	F.Intrinsic.Control.CallSub("MakeImportFile","sPath",V.Screen.F_OrderImport!txtPath.Text)
+	F.Intrinsic.Control.If(V.Args.bSuccess,=,True)
+		Gui.F_OrderImport.lblStatus.Caption("Uploading data to Global Shop . . .")
+		Gui.F_OrderImport.Progress1.Value(0)
+		Gui.F_OrderImport.Progress1.Max(1)
+		F.Intrinsic.Control.CallSub("CallUpload")
+		Gui.F_OrderImport.Progress1.Value(1)
+		Gui.F_OrderImport.Progress1.Value(0)
+		Gui.F_OrderImport.Progress1.Max(V.Global.sData.UBound)
+		Gui.F_OrderImport.lblStatus.Caption("Writing due dates . . .")
+		F.Intrinsic.Control.CallSub("DueDates")
+		Gui.F_OrderImport.Progress1.Value(0)
+		Gui.F_OrderImport.Progress1.Max(3)
+		Gui.F_OrderImport.lblStatus.Caption("Generating log file . . .")
+		F.Intrinsic.Control.CallSub("PrintLog")
+	F.Intrinsic.Control.Else
+		F.Intrinsic.ui.Msgbox("Error generating import file.")
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.Msgbox("No file was selected.")
+F.Intrinsic.Control.EndIf
+Gui.F_OrderImport..MousePointer(0)
+F.Intrinsic.Control.CallSub("ProgramEnd")
+
+Program.Sub.Import.End
+
+Program.Sub.DueDates.Start
+V.Local.i.Declare(Long)
+V.Local.sImportData.Declare(String)
+V.Local.sSQL.Declare(String)
+V.Local.sLine.Declare(String)
+V.Local.sDate.Declare(String)
+V.Local.sMonth.Declare(String)
+V.Local.sDay.Declare(String)
+V.Local.sYear.Declare(String)
+V.Local.iDate.Declare(Long)
+
+F.Intrinsic.Control.For(V.Local.i,V.Global.sData.LBound,V.Global.sData.UBound,1)
+	Gui.F_OrderImport.Progress1.Value(V.Local.i)
+	F.Intrinsic.String.Split(V.Global.sData(v.Local.i),"!*!",V.Local.sImportData)
+	F.Intrinsic.String.LPad(V.Local.sImportData(0),"0",3,V.Local.sLine)
+	F.Intrinsic.String.Concat(V.Local.sLine,"0",V.Local.sLine)
+	F.Intrinsic.String.Concat("Select * from Order_Lines where Order_No='",V.Global.sOrder,"' and Record_No='",V.Local.sLine,"'",V.Local.sSQL)
+	F.ODBC.Connection!con.OpenRecordsetRW("rst",V.Local.sSQL)
+	F.Intrinsic.Control.If(V.Odbc.con!rst.EOF,=,False)
+		F.Intrinsic.String.Mid(V.Local.sImportData(6),7,4,V.Local.sDate)
+		F.Intrinsic.String.Left(V.Local.sImportData(6),2,V.Local.sMonth)
+		F.Intrinsic.String.Mid(V.Local.sImportData(6),4,2,V.Local.sDay)
+		F.Intrinsic.String.Concat(V.Local.sDate,V.Local.sMonth,V.Local.sDay,V.Local.sDate)
+		F.ODBC.con!rst.set!Date_Item_Prom(V.Local.sDate)
+		F.ODBC.con!rst.Update
+	F.Intrinsic.Control.EndIf
+	F.ODBC.con!rst.Close
+
+	V.Local.sDate.Set("")
+	F.Intrinsic.String.Right(V.Local.sImportData(6),2,V.Local.sYear)
+	F.Intrinsic.String.Concat(V.Local.sMonth,V.Local.sDay,V.Local.sYear,V.Local.sDate)
+	F.Intrinsic.Debug.Stop
+	F.Intrinsic.Math.ConvertToLong(V.Local.sDate,V.Local.iDate)
+	F.Intrinsic.String.Concat("Update Order_Lines set Fill_Item_Promise=",V.Local.iDate," where Order_No='",V.Global.sOrder,"' and Record_No='",V.Local.sLine,"'",V.Local.sSQL)
+	F.ODBC.Connection!con.Execute(V.Local.sSQL)
+
+F.Intrinsic.Control.Next(V.Local.i)
+
+Program.Sub.DueDates.End
+
+Program.Sub.GetPartArr.Start
+V.Local.bOOAvailable.Declare(Boolean)
+V.Local.bExlAvailable.Declare(Boolean)
+V.Local.sValue.Declare(String)
+V.Local.i.Declare(Long)
+V.Local.sText.Declare(String)
+V.Local.iL.Declare(Long)
+V.Local.iLen.Declare(Long)
+
+V.Local.sText.Set("")
+F.Automation.MSExcel.CheckPresence(V.Local.bExlAvailable)
+F.Intrinsic.Control.If(V.Local.bExlAvailable,=,True)
+	'Excel
+	F.Automation.MSExcel.CreateAppObject("ExcelApp")
+	F.Automation.MSExcel.OpenWorkbook("ExcelApp","ExcelWB",V.Args.sPath)
+	F.Automation.MSExcel.OpenWorksheet("ExcelWB","ExcelWS",3)
+
+	F.Intrinsic.Control.For(V.Local.i,1,1000,1)
+		F.Automation.MSExcel.ReadCell("ExcelWS",V.Local.i,1,V.Local.sValue)
+		F.Intrinsic.Control.If(V.Local.sValue,=,"")
+			F.Intrinsic.Control.ExitFor(V.Local.i)
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.For(V.Local.iL,1,7,1)
+			F.Automation.MSExcel.ReadCell("ExcelWS",V.Local.i,V.Local.iL,V.Local.sValue)
+			F.Intrinsic.String.Concat(V.Local.sText,V.Local.sValue.Trim,V.Local.sText)
+			F.Intrinsic.Control.If(V.Local.iL,<,7)
+				F.Intrinsic.String.Concat(V.Local.sText,"!*!",V.Local.sText)
+			F.Intrinsic.Control.Else
+				F.Intrinsic.String.Concat(V.Local.sText,"*!*",V.Local.sText)
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.Next(V.Local.iL)
+	F.Intrinsic.Control.Next(V.Local.i)
+
+	F.Automation.Generic.DestroyObject("ExcelWS")
+	F.Automation.Generic.DestroyObject("ExcelWB")
+	F.Automation.Generic.DestroyObject("ExcelApp")
+F.Intrinsic.Control.Else
+	F.Automation.OOGeneral.CheckPresence(V.Local.bOOAvailable)
+	F.Intrinsic.Control.If(V.Local.bOOAvailable,=,True)
+		'OO Calc
+		F.Automation.OOGeneral.CreateContainer("OOContainer")
+		F.Automation.OOGeneral.CreateAppObject("OOContainer","OOApp")
+		F.Automation.OOCalc.OpenWorkbook("OOContainer","OOApp","CalcWB",V.Args.sPath)
+		F.Automation.OOCalc.OpenWorksheet("CalcWB","CalcWS",2)
+
+		F.Intrinsic.Control.For(V.Local.i,0,999,1)
+			F.Automation.OOCalc.ReadCell("CalcWS",V.Local.i,0,V.Local.sValue)
+			F.Intrinsic.Control.If(V.Local.sValue,=,"")
+				F.Intrinsic.Control.ExitFor(V.Local.i)
+			F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.For(V.Local.iL,0,6,1)
+				F.Automation.OOCalc.ReadCell("CalcWS",V.Local.i,V.Local.iL,V.Local.sValue)
+				F.Intrinsic.String.Concat(V.Local.sText,V.Local.sValue.Trim,V.Local.sText)
+				F.Intrinsic.Control.If(V.Local.iL,<,6)
+					F.Intrinsic.String.Concat(V.Local.sText,"!*!",V.Local.sText)
+				F.Intrinsic.Control.Else
+					F.Intrinsic.String.Concat(V.Local.sText,"*!*",V.Local.sText)
+				F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.Next(V.Local.iL)
+		F.Intrinsic.Control.Next(V.Local.i)
+
+		F.Automation.Generic.DestroyObject("CalcWS")
+		F.Automation.Generic.DestroyObject("CalcWB")
+		F.Automation.Generic.DestroyObject("OOApp")
+		F.Automation.Generic.DestroyObject("OOContainer")
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Math.Sub(V.Local.sText.Length,3,V.Local.iLen)
+F.Intrinsic.String.Left(V.Local.sText,V.Local.iLen,V.Local.sText)
+F.Intrinsic.Control.If(V.Local.sText,<>,"")
+	F.Intrinsic.Variable.AddRV("sText",V.Local.sText)
+	F.Intrinsic.Variable.AddRV("bSuccess",True)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Variable.AddRV("bSuccess",False)
+F.Intrinsic.Control.EndIf
+
+Program.Sub.GetPartArr.End
+
+Program.Sub.ErrorLog.Start
+F.ODBC.Connection!con.OpenRecordsetRW("rstE","Select * from ATG_EMSImportLog")
+F.ODBC.con!rstE.AddNew
+F.ODBC.con!rstE.Set!OrderNo(V.Global.sOrder)
+F.ODBC.con!rstE.Set!Line(V.Args.sLine)
+F.ODBC.con!rstE.Set!Part(V.Args.sPart)
+F.ODBC.con!rstE.Set!Rev(V.Args.sRev)
+F.ODBC.con!rstE.Set!Import_Error(V.Args.iMode)
+F.ODBC.con!rstE.Update
+F.ODBC.con!rstE.Close
+
+
+Program.Sub.ErrorLog.End
+
+Program.Sub.PrintLog.Start
+V.Local.sText.Declare(String)
+V.Local.sLogPath.Declare(String)
+V.Local.bExists.Declare(Boolean)
+
+F.Intrinsic.String.Concat("Order ",V.Global.sOrder," Error Log",V.Ambient.NewLine,V.Ambient.NewLine,V.Local.sText)
+
+F.Intrinsic.String.Concat(V.Local.sText,"New Parts",V.Ambient.NewLine,V.Local.sText)
+F.ODBC.Connection!con.OpenRecordsetRO("rstE","Select * from ATG_EMSImportLog where Import_Error=2 order by Line")
+F.Intrinsic.Control.DoUntil(V.Odbc.con!rstE.EOF,=,True)
+	F.Intrinsic.String.Concat(V.Local.sText,"Line: ",V.Odbc.con!rstE.FieldVal!Line,", Part: ",V.Odbc.con!rste.FieldVal!Part,V.Odbc.con!rstE.FieldVal!Rev,V.Ambient.NewLine,V.Local.sText)
+	F.ODBC.con!rstE.MoveNext
+F.Intrinsic.Control.Loop
+F.ODBC.con!rstE.Close
+Gui.F_OrderImport.Progress1.Value(1)
+
+F.Intrinsic.String.Concat(V.Local.sText,V.Ambient.NewLine,V.Local.sText)
+
+F.Intrinsic.String.Concat(V.Local.sText,"Rev Discrepancies",V.Ambient.NewLine,V.Local.sText)
+F.ODBC.Connection!con.OpenRecordsetRO("rstE","Select * from ATG_EMSImportLog where Import_Error=1 order by Line")
+F.Intrinsic.Control.DoUntil(V.Odbc.con!rstE.EOF,=,True)
+	F.Intrinsic.String.Concat(V.Local.sText,"Line: ",V.Odbc.con!rstE.FieldVal!Line,", Part: ",V.Odbc.con!rste.FieldVal!Part,V.Odbc.con!rstE.FieldVal!Rev,V.Ambient.NewLine,V.Local.sText)
+	F.ODBC.con!rstE.MoveNext
+F.Intrinsic.Control.Loop
+F.ODBC.con!rstE.Close
+Gui.F_OrderImport.Progress1.Value(2)
+
+F.Intrinsic.String.Concat(V.Local.sText,V.Ambient.NewLine,V.Local.sText)
+
+F.Intrinsic.String.Concat(V.Local.sText,"Price Discrepancies",V.Ambient.NewLine,V.Local.sText)
+F.ODBC.Connection!con.OpenRecordsetRO("rstE","Select * from ATG_EMSImportLog where Import_Error=0 order by Line")
+F.Intrinsic.Control.DoUntil(V.Odbc.con!rstE.EOF,=,True)
+	F.Intrinsic.String.Concat(V.Local.sText,"Line: ",V.Odbc.con!rstE.FieldVal!Line,", Part: ",V.Odbc.con!rste.FieldVal!Part,V.Odbc.con!rstE.FieldVal!Rev,V.Ambient.NewLine,V.Local.sText)
+	F.ODBC.con!rstE.MoveNext
+F.Intrinsic.Control.Loop
+F.ODBC.con!rstE.Close
+Gui.F_OrderImport.Progress1.Value(3)
+
+F.Intrinsic.String.Concat(V.Caller.FilesDir,"\EMSImportLog.txt",V.Local.sLogPath)
+F.Intrinsic.File.Exists(V.Local.sLogPath,V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists,=,True)
+	F.Intrinsic.File.DeleteFile(V.Local.sLogPath)
+F.Intrinsic.Control.EndIf
+F.Intrinsic.File.String2File(V.Local.sLogPath,V.Local.sText)
+
+
+
+Program.Sub.PrintLog.End
+
+
